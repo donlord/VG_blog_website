@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Create Account</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style7.css')}}">
+    </head>
+<body>
+    <h1>Create New Account</h1>
+    {% if step=="new_user" %}
+            <p><a href="{{ url_for('signin') }}">Or Sign In</a></p>
+            <form action="{{ url_for('signup') }}" method="post">
+            <h2>Name: <h2><input type="text" size="30" name="name"><br>
+            <h2>Username: </h2><input type="username" size="30" name="username"><br>
+            <h2>Password: </h2><input type="password" size="30" name="password"><br><br>
+           
+            <input type="submit">
+            <input type="hidden" name="step" value="add_entry"> 
+            </form>
+    {% elif step == "add_user" %}
+        <p>You have made a new account! <br>
+        <a href="{{ url_for('signin') }}">Now sign in!!</a></p>
+       
+    {% endif %}
+</body>
+</html>

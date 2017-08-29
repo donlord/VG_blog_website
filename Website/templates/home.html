@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Home</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style7.css')}}">
+
+    </head>
+<body>
+    <h1>Welcome to Video Game Central!!!!!:)</h1>
+    <p><img src="static/db_logo2.jpg">
+    <ul>
+        <li><a href="{{ url_for('browse') }}">List all entries</a>
+        <li><a href="{{ url_for('write') }}">Write a new entry</a>
+        <li><a href="{{ url_for('edit') }}">Edit an entry</a>
+        <li><a href="{{ url_for('delete') }}">Delete an entry</a>
+        <li><a href="{{ url_for('bonus') }}">All Data</a>
+        <li><a href="{{ url_for('userpage') }}">View Your Page</a>
+        <br><br>
+        <p class="note">Restore takes 30s-1m to run so here is a buffer.<br>
+        This reimports the original data from our file.</p>
+        <br><a href="{{ url_for('refresh') }}">Restore Data to default</a>
+        
+        
+    </ul>
+</body>
+</html>

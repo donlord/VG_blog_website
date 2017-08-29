@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Edit an entry</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style7.css')}}">
+    </head>
+<body>
+    <h1>Edit an entry</h1>
+    {% if step == "display_entries" %}
+        <a href="{{ url_for('homepage') }}">Back to homepage</a> <p>
+		Choose a title to edit:
+		<form action="{{ url_for('edit') }}" method="post">
+        <table border="1">
+        <tr><td><p>:)</p></td><td><p>Title</p></td><td><p>Company</p></td><td><p>maxPlayer</p></td><td><p>Price</p></td><td><p>VGid</p></td></tr>
+        {% for entry in entries %}
+            <tr><td><input type="radio" name="VGid" value="{{entry.VGid}}"><input type="submit">
+            </form></td>
+            <td><p>{{ entry.title }}</p></td><td><p>{{ entry.company }}</p></td><td><p>{{ entry.maxPlayer }}</p></td>
+            <td><p>{{ entry.price }}</p></td><td><p>{{ entry.VGid }}</p></td></tr>
+             
+        {% endfor %}
+		</table>
+		<input type="hidden" name="step" value="make_edits">
+		</form>
+	{% elif step == "make_edits" %}
+        Edit your entry for the game: <u>{{ entry.title }}</u>
+        <form action="{{ url_for('edit') }}" method="post">
+        <p>Title: </p><input type="text" size="30" name="title"><br>
+        <p>Company: </p><input type="text" size="30" name="company"><br>
+		<p>MaxPlayers: </p><input type="text" size="30" name="maxPlayer"><br>
+		<p>Price: </p><input type="text" size="30" name="price"><br>
+        <p>Username: </p><input type="text" name="username"><br>
+        <p>Password: </p><input type="password" name="password">
+        <input type="hidden" name="VGid" value="{{entry.VGid}}">
+        <input type="hidden" name="step" value="update_database">
+        <br><input type="submit">
+        
+    {% elif step == "update_database" %}
+        <p>Your post has been updated!</p>
+    {% elif step == "wrong"%}
+        <p>Your password and username doesn't match. <br> Are you a hacker??<br>
+        <br><a href="{{ url_for('edit') }}">Retry</a>
+        <br><a href="{{ url_for('homepage') }}">Home</a></p>
+    
+    
+    {%endif%}
+</body>
+</html>

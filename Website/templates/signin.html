@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Sign into Account</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style8.css')}}">
+    </head>
+<body>
+    <h1>Sign into Account</h1>
+    {% if step=="user_signin" %}
+            <form action="{{ url_for('signin') }}" method="post">
+            <h2>Username: </h2> <input type="username" size="30" name="username"><br>
+            <h2>Password: </h2> <input type="password" size="30" name="password"><br>
+            
+            <input type="submit">
+            <input type="hidden" name="step" value="signed_in"> 
+            </form>
+    {% elif step == "signed_in" %}
+       <p>You are signed in.<br>
+       <a href="{{ url_for('homepage') }}">Go To HomePage</a></p>
+    {% else %}
+        <p>Incorrect username or password <br>
+        <br><a href="{{ url_for('signin') }}">Retry</a></p>
+   
+    {% endif %}
+</body>
+</html>
+

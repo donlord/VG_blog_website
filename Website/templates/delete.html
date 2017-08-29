@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Delete</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style7.css')}}">
+    </head>
+<body>
+    <h1>Delete an entry</h1>
+    {% if step == "display_entries" %}
+        <a href="{{ url_for('homepage') }}">Back to homepage</a> <p>
+		Choose a title to delete:
+		<form action="{{ url_for('delete') }}" method="post">
+        <table border="1">
+        <tr><td><p>:)</p></td><td><p>Title</p></td><td><p>Company</p></td><td><p>maxPlayer</p></td><td><p>Price</p></td><td><p>VGid</p></td></tr>
+        {% for entry in entries %}
+            <tr><td><input type="radio" name="VGid" value="{{entry.VGid}}">
+            </form></td>
+            <td><p>{{ entry.title }}</p></td><td><p>{{ entry.company }}</p></td><td><p>{{ entry.maxPlayer }}</p></td>
+            <td><p>{{ entry.price }}</p></td><td><p>{{ entry.VGid }}</p></td></tr>
+             
+        {% endfor %}
+        </table>
+        <p>Credentials:</p><br>
+        <p>User: </p><input type="text" size="30" name="username"><br>
+        <p>PW: </p><input type="password" size="30" name="password"><br>
+        <input type="submit">
+        <input type="hidden" name="step" value="delete_entry">
+        </form>
+    
+    {% elif step == "delete_entry" %}
+        <p>Entry has been deleted.<br>
+        <br><a href="{{ url_for('homepage') }}">Home</a>
+        <br><a href="{{ url_for('delete') }}">Delete Another</a>
+        <p>
+    {% elif step == "error" %}
+        <p>errrororo.
+        <a href="{{ url_for('homepage') }}">Back to homepage</a></p>
+    {% else %}
+        <p>Your username and password do not match.<br>
+        <a href="{{ url_for('homepage') }}">Back to homepage</a>
+        <br><a href="{{ url_for('delete') }}">Retry</a></p>
+    {% endif %}
+    
+    </html>

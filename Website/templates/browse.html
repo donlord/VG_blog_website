@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Browse entries</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style7.css')}}">
+    </head>
+<body>
+    <h1>Browse Video Games</h1>
+	<a href="{{ url_for('homepage') }}">Back to homepage</a>
+    {% if entries|length > 0 %}
+        <ul>
+        {% for entry in entries %}
+            <li><b>{{ entry.title }}</b>
+            <p>
+            <i> Made By: </i> {{entry.company}}
+			<p> <i>Price: </i>{{entry.price}} 
+			<p> <i>PlayerCount: </i> {{entry.MaxPlayer}}
+            <hr>
+            
+        {% endfor %}
+        <a href="{{ url_for('homepage') }}">Back to homepage</a>
+        </ul>
+    {% else %}
+        This blog is empty.
+    {% endif %}
+</body>
+</html>

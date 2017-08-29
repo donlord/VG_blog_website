@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>UserPage</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style8.css')}}">
+    </head>
+<body>
+    <h1>Your Page</h1>
+    {% if step=="user_page" %}
+            <form action="{{ url_for('userpage') }}" method="post">
+            Username: <input type="username" size="30" name="username"><br>
+            Password: <input type="password" size="30" name="password"><br><br>
+            <input type="submit">
+            <input type="hidden" name="step" value="view_page"> 
+            </form>
+    {% elif step == "view_page" %}
+            <ul>
+        {% for entry in entries %}
+            <li><b>{{ entry.name }}</b>
+            <p><i> ID#: </i> {{entry.userid}}
+		 <i> Username: </i>{{entry.username}}</p>
+            <br> 
+        {% endfor %}
+        <a href="{{ url_for('homepage') }}">Back to homepage</a>
+        </ul>
+            
+        <h2>Things you reviewed:<br><h2>
+        {% if entries|length > 0 %}
+            <table border="1">
+            <tr><td>:)</td><td>ID#</td><td>Rating</td><td>Review</td></tr>
+            {% for entry in entries %}
+               <tr><td>{{ entry.VGid }}</td><td>{{ entry.Rating }}</td><td>{{ entry.Review }}</td></tr>
+                
+            {% endfor %}
+            </table>
+        {% else %}
+            <p>You have not reviewed anything.</p>
+        {% endif %}
+        <h2>Your Wishlist:<br><h2>
+        {% if entries2|length > 0 %}
+            <table border="1">
+            <tr><td>:)</td><td>ID#</td><td>Title</td><td>Rating</td><td>Price</td></tr>
+            {% for entry in entries2 %}
+               <tr><td>{{ entry.VGid }}</td><td>{{ entry.tile }}</td><td>{{ entry.avgRate }}</td><td>{{ entry.price }}</td></tr>
+                
+            {% endfor %}
+            </table>
+        {% else %}
+            <p>Your wishlist is empty.</p>
+        {% endif %}
+        
+    {% else %}
+        <p>Incorrect username or password...
+        <a href="{{ url_for('userpage') }}">Retry</a> <br>
+        Or you don't have an account...
+        <a href="{{ url_for('signup') }}">Sign Up</a></p>
+       
+    {% endif %}
+        <a href="{{ url_for('homepage') }}">Return to homepage</a>
+</body>
+</html>

@@ -1,0 +1,57 @@
+body {
+    background-color: black;
+}
+h1 {
+    color: white;
+    font-family: Georgia, serif;
+    font-size: 300%;
+    border: 10px solid powderblue;
+    padding: 50px;
+}
+
+p {
+    font-size: 75%;
+    font-family: Georgia, serif;
+    color: red;  
+}
+
+ul {
+    text-align:center;
+    border-top:1px solid #eee; 
+    border-bottom:1px solid #eee; 
+    padding:10px 0;
+    color: white;
+    font-size: 160%;
+    font-family: Georgia, serif  
+ }
+
+li {
+    text-transform:uppercase; 
+    padding:0 10px; 
+    letter-spacing:10px;
+    margin: 0 10px;
+    color: white;
+    font-size: 100%;
+    font-family: Georgia, serif 
+}
+
+form {
+      color: white;
+      font-size: 100%;
+      font-family: Georgia, serif 
+}
+
+table {
+      color: white;
+      font-size: 100%;
+      font-family: Georgia, serif 
+}
+
+a {
+   text-decoration:none; 
+   color:#eee;
+   color: white;
+   font-size: 100%;
+   font-family: Georgia, serif 
+}
+a:hover { text-decoration:underline; }

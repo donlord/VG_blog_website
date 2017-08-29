@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>Bonus</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style7.css')}}">
+    </head>
+<body>
+    <h1>Browse Everything!!!</h1>
+    <a href="{{ url_for('homepage') }}">Back to homepage</a><br>
+    <table border="1">
+    <tr><td><p>ID#</p></td><td><p>Title</p></td><td><p>Genre</p></td><td><p>Platform</p></td><td><p>Rating</p></td><td><p>Release</p></td></tr>
+    {% for entry in entries %}
+        <tr>
+        <td><p>{{entry.VGid}}</td><td><p>{{ entry.title }}</p></td><td><p>{{ entry.genre }}</p></td><td><p>{{ entry.plat }}</p></td><td><p>{{ entry.Rating }}</p></td><td><p>{{ entry.ReleaseYear }}</p></td></tr>
+    {%endfor%}

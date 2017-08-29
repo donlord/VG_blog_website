@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>Write</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style7.css')}}">
+    </head>
+<body>
+    <h1>Add a new video game</h1>
+    {% if step=="compose_entry" %}
+        
+            
+            <form action="{{ url_for('write') }}" method="post">
+            <p>Title: </p><input type="text" size="30" name="title"><br>
+            <p>Company: </p><input type="text" size="30" name="company"><br>
+			<p>MaxPlayers: </p><input type="text" size="30" name="maxPlayer"><br>
+			<p>Price: </p><input type="text" size="30" name="price"><br>
+			
+            
+            
+            <p>Username: </p><input type="username" size="30" name="username"><br>
+            
+            
+            
+            <p>Password: </p><input type="password" size="30" name="password"><br><br>
+            <input type="submit">
+            
+            <input type="hidden" name="step" value="add_entry"> 
+            </form>
+        
+    {% elif step == "add_entry" %}
+        <p>Your post has been submitted.<br></p>
+        <li><a href="{{ url_for('homepage') }}">Return to homepage</a>
+    {% elif step == "wrong"%}
+        <p>Your PW/username was wrong.</p>
+        <br>
+        <a href="{{ url_for('write') }}">Retry</a><br>
+        <a href="{{ url_for('homepage') }}">Home</a>
+    {% endif %}
+</body>
+</html>
